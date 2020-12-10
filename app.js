@@ -8,8 +8,8 @@ var logger = require('morgan');
 const path = require('path');
 const cors = require('cors');
 
-var indexRouter = require('./routes/index');
-var roomsRouter = require('./routes/roomsRouter');
+var indexRouter = require('./Routes/index');
+var roomsRouter = require('./Routes/roomsRouter');
 const errorController = require('./Controllers/errorController');
 const AppError = require('./Utils/AppError');
 const DBConnect = require('./Utils/DBConnect');
