@@ -55,6 +55,8 @@ exports.getRoom = CatchAsync(async (req, res, next) => {
       ];
    }
 
+   console.log('room.messages', room.messages);
+
    const updatedRoom = await room.save({ validateBeforeSave: false });
 
    res.json({
@@ -62,11 +64,13 @@ exports.getRoom = CatchAsync(async (req, res, next) => {
       room: updatedRoom,
    });
 
+   console.log('updatedRoom', updatedRoom.messages);
    // * Send Event to Client that New User is Joined
    const { io } = require('../app');
    io.sockets.emit('userJoined', {
       socketId: req.body.socketId,
       userName,
+      room: updatedRoom,
    });
 
    return;
@@ -160,6 +164,7 @@ exports.deleteRoomUser = CatchAsync(async (req, res, next) => {
    io.sockets.emit('userLeft', {
       socketId: req.body.socketId,
       user: removedUser,
+      room: updatedRoom,
    });
 
    return;
