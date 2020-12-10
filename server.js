@@ -1,6 +1,6 @@
 let server;
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT;
 module.exports.getServer = () => server;
 module.exports.appListen = (app) => {
    server = app.listen(port, () => {

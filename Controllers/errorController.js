@@ -12,6 +12,6 @@ module.exports = (err, req, res, next) => {
    // render the error page
    res.status(err.statusCode).json({
       status: err.status,
-      message: err.message,
+      message: 'Something Went Very Wrong',
    });
 };
